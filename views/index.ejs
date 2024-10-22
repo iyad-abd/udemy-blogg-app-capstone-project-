@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Blog-App</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi mx-5 bi-box-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z"/>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="#posts" class="nav-link px-2 text-white">posts</a></li>
+                    <li><a href="#conatact" class="nav-link px-2 text-white">About</a></li>
+                    <li><a href="#conatact" class="nav-link px-2 text-white">Contact Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="px-4 py-5 my-5 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-box-arrow-in-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1z"/>
+                <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+            </svg>
+            <h1 class="display-5 fw-bold text-body-emphasis">Upload New Post</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Share your thoughts, ideas, or experiences by uploading your post here!</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="/upload" type="button" class="btn btn-primary btn-lg px-4 gap-3">Upload Here</a>
+                </div>
+            </div>
+        </div>
+    </section>
+ <section>
+    <div >
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <div class="col-lg-6 px-0">
+      <h1 class="display-4 fst-italic">Mastering the Art of Productivity: 5 Habits for a Focused Mind</h1>
+      <p class="lead my-3">In today’s fast-paced world, staying productive can be a challenge. In this post, we explore five proven habits to help you stay focused, manage your time effectively, and accomplish your goals without burning out. Start building a more productive life today.</p>
+      <p class="lead mb-0"><a href="/post" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+      
+    </div>
+  </div>
+  </section>
+
+  <section id="posts" class="container">
+        
+        <% posts.forEach((post, index) => { %>
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1"><%= post.title %></h2>
+                <p class="lead"><%= post.content %></p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img class="img-fluid rounded mb-5" src="<%= post.imageUrl %>" alt="">
+            </div>
+
+            <form action="/delete/<%= post.id %>" method="POST" style="display: inline;">
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+ <a href="/edit/<%= post.id %>" class="btn btn-primary">Edit</a>
+   
+            <hr>
+        <% }) %>
+    </section>
+    
+   <section id="posts" class="container">
+    
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">The Art of Calisthenics:<span class="text-body-secondary"> Building Strength with Bodyweight.</span></h2>
+        <p class="lead">In this post, we dive deep into the world of calisthenics, exploring how bodyweight exercises can help build strength and agility without the need for expensive gym equipment. From beginner-level moves like push-ups to advanced techniques like the planche, discover how to structure your calisthenics routine for maximum results.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img  class="img-fluid rounded mb-5" src="/images/calis.webp" alt="">
+      </div>
+<hr>
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Mastering JavaScript:  <span class="text-body-secondary">Tips for Front-End Developers.</span></h2>
+         <p class="lead">JavaScript is a must-learn language for any aspiring front-end developer. In this article, we discuss the key features of modern JavaScript, including ES6+ features like arrow functions, destructuring, and async/await. You'll also learn practical tips to enhance your coding workflow and improve your debugging process.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img  class="img-fluid rounded mb-5" src="/images/java.webp" alt="">
+      </div>
+<hr>
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1"> Understanding Mindfulness:  <span class="text-body-secondary">A Psychologist's Perspective</span></h2>
+        <p class="lead">Mindfulness is more than just a trendy buzzword; it's a powerful tool for managing stress and increasing well-being. A psychologist shares insights into the science behind mindfulness, how it affects the brain, and practical exercises you can incorporate into your daily routine to live a more mindful, balanced life.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img  class="img-fluid rounded mb-5" src="/images/mind.jpg" alt="">
+      </div>
+
+ <hr>   
+
+
+
+ </section>
+    
+    
+    <section id="conatact" class="footer ">
+        <div class="container ">
+            <footer class="py-5">
+                <div class="row">
+                    <div class="col-6 col-md-2 mb-3">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                            <li class="nav-item mb-2"><a href="/pricing" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6 col-md-2 mb-3">
+                        <h5>Welcome to FUN.US APP !!</h5>
+                        <p class="lead">Here, you'll find a variety of articles on topics ranging from technology and development to fitness and mindfulness. Enjoy exploring.</p>
+                    </div>
+
+                    <div class="col-md-5 offset-md-1 mb-3">
+                        <form>
+                            <h5>This APP was created by: <u>IYAD ABOU DARGHAM</u></h5>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                    <p class="m-2">© 2024 FUN.US, Inc. All rights reserved.</p>
+                    <ul class="nav mr-5 col-md-4 justify-content-end list-unstyled d-flex">
+                        <li class="ms-3"><a class="text-body-secondary" href="https://x.com/iyad43788"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a></li>
+                        <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/iyad_abou_dargham_/"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3

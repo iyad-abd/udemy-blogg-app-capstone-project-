@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Post</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .form-container {
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .btn {
+      width: 48%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="form-container">
+          <h2 class="text-center">Edit Your Post</h2>
+
+          <form action="/edit/<%= post.id %>" method="POST" enctype="multipart/form-data">
+            <div class="form-group mb-4">
+              <label for="title" class="form-label">Post Title</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="title" 
+                name="title" 
+                value="<%= post.title %>" 
+                required
+              >
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="content" class="form-label">Post Content</label>
+              <textarea 
+                class="form-control" 
+                id="content" 
+                name="content" 
+                rows="6" 
+                required
+              ><%= post.content %></textarea>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="photo" class="form-label">Upload New Image (Optional)</label>
+              <input 
+                type="file" 
+                class="form-control" 
+                id="photo" 
+                name="photo"
+              >
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-success">Update Post</button>
+              <a href="/" class="btn btn-secondary">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
